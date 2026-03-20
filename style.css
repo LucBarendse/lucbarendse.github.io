@@ -138,3 +138,7 @@ body {
 .dropdown-nested-content a {
   font-size: clamp(13px, 1.6vw, 24px);
 }
+
+.site-title-link {
+  text-decoration: none;
+}
