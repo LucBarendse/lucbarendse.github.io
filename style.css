@@ -141,4 +141,5 @@ body {
 
 .site-title-link {
   text-decoration: none;
+  display: inline-block;
 }
