@@ -8,15 +8,12 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-
   <div class="hero">
-    <!-- Replace this with your own background image by setting CSS background-image in style.css -->
     <div class="hero-overlay"></div>
-
-    <span class="site-title"><b>Luc Barendse</b></span>
-
+    <a href="index.html" class="site-title-link">
+      <span class="site-title"><b>Luc Barendse</b></span>
+    </a>
     <nav class="nav">
-
       <!-- Projecten dropdown (left) -->
       <div class="dropdown">
         <button class="dropbtn">Projecten ▾</button>
@@ -37,26 +34,20 @@
           </div>
         </div>
       </div>
-
       <!-- About (center) -->
       <button class="navbtn center">About</button>
-
       <!-- Contact (right) -->
       <button class="navbtn right">Contact</button>
-
     </nav>
   </div>
-
   <script>
     // Toggle main dropdown
     const dropbtn = document.querySelector('.dropbtn');
     const dropdownContent = document.querySelector('.dropdown-content');
-
     dropbtn.addEventListener('click', function (e) {
       e.stopPropagation();
       dropdownContent.classList.toggle('open');
     });
-
     // Toggle nested dropdowns
     document.querySelectorAll('.dropdown-nested > a').forEach(function (link) {
       link.addEventListener('click', function (e) {
@@ -70,7 +61,6 @@
         nested.classList.toggle('open');
       });
     });
-
     // Close everything when clicking outside
     document.addEventListener('click', function () {
       dropdownContent.classList.remove('open');
@@ -79,6 +69,5 @@
       });
     });
   </script>
-
 </body>
 </html>
