@@ -49,11 +49,8 @@
     // Single click on "Projecten" navigates, double click (or check if already open) toggles dropdown
     dropbtn.addEventListener('click', function (e) {
       e.stopPropagation();
-      if (dropdownContent.classList.contains('open')) {
-        window.location.href = '/projecten';
-      } else {
-        dropdownContent.classList.add('open');
-      }
+      dropdownContent.classList.toggle('open');
+      window.location.href = '/projecten';
     });
 
     // Toggle nested dropdowns — clicking Foto/Video links navigates, arrow toggles submenu
