@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&display=swap" rel="stylesheet">
+  <title>Luc Barendse</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="hero">
+    <div class="hero-overlay"></div>
+    <div style="text-align: center;">
+      <a href="index.html" class="site-title-link">
+        <span class="site-title"><b>Luc Barendse</b></span>
+      </a>
+    </div>
+    <nav class="nav">
+      <!-- Projecten dropdown (left) -->
+      <div class="dropdown">
+        <button class="dropbtn">Projecten ▾</button>
+        <div class="dropdown-content">
+          <div class="dropdown-nested">
+            <a href="/foto">Foto ▾</a>
+            <div class="dropdown-nested-content">
+              <a href="link1">Project 1</a>
+              <a href="link2">Project 2</a>
+            </div>
+          </div>
+          <div class="dropdown-nested">
+            <a href="/video">Video ▾</a>
+            <div class="dropdown-nested-content">
+              <a href="link3">Project 1</a>
+              <a href="link4">Project 2</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- About (center) -->
+      <button class="navbtn center" onclick="window.location.href='/over'">Over</button>
+      <!-- Contact (right) -->
+      <button class="navbtn right" onclick="window.location.href='/contact'">Contact</button>
+    </nav>
+  </div>
+  <script>
+    const dropbtn = document.querySelector('.dropbtn');
+    const dropdownContent = document.querySelector('.dropdown-content');
+
+    // Single click on "Projecten" navigates, double click (or check if already open) toggles dropdown
+    dropbtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      dropdownContent.classList.toggle('open');
+      window.location.href = '/projecten';
+    });
+
+    // Clicking Foto/Video navigates directly to their href
+    document.querySelectorAll('.dropdown-nested > a').forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        e.stopPropagation();
+        window.location.href = this.href;
+      });
+    });
+
+    // Close everything when clicking outside
+    document.addEventListener('click', function () {
+      dropdownContent.classList.remove('open');
+      document.querySelectorAll('.dropdown-nested-content').forEach(function (el) {
+        el.classList.remove('open');
+      });
+    });
+  </script>
+</body>
+</html>
