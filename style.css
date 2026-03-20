@@ -47,7 +47,7 @@ body {
   font-weight: 700;
   font-family: 'Roboto Mono', monospace;
   color: #ffffff;
-  letter-spacing: 0.04em;
+  letter-spacing: -0.02em;
   padding-top: 18px;
   line-height: 1;
   text-shadow: 0 1px 4px rgba(0,0,0,0.6);
