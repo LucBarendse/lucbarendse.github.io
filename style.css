@@ -45,7 +45,7 @@ body {
   text-align: center;
   font-size: clamp(28px, 4vw, 48px);
   font-weight: bold;
-  color: #d4b896;           /* warm gold/tan — matches screenshot */
+  color: #ffffff;           /* warm gold/tan — matches screenshot */
   letter-spacing: 0.04em;
   padding-top: 18px;
   line-height: 1;
@@ -64,7 +64,7 @@ body {
 /* Shared button base */
 .dropbtn,
 .navbtn {
-  background: #2e3349;      /* dark navy — matches screenshot */
+  background: #000000;      /* dark navy — matches screenshot */
   color: #fff;
   border: none;
   cursor: pointer;
@@ -76,7 +76,7 @@ body {
 }
 .dropbtn:hover,
 .navbtn:hover {
-  background: #404869;
+  background: #000000;
 }
 /* About — pushed to horizontal center */
 .navbtn.center {
@@ -97,7 +97,7 @@ body {
   position: absolute;
   top: 100%;
   left: 0;
-  background: #2e3349;
+  background: #000000;
   min-width: 140px;
   z-index: 100;
   box-shadow: 0 4px 12px rgba(0,0,0,0.5);
