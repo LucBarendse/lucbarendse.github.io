@@ -65,19 +65,45 @@ body {
 /* Shared button base */
 .dropbtn,
 .navbtn {
-  background: #000000;      /* dark navy — matches screenshot */
-  color: #fff;
-  border: none;
+  background: #212121;
+  color: #e8e8e8;
+  border: unset;
+  border-radius: 15px;
   cursor: pointer;
   font-family: inherit;
-  font-size: clamp(16px, 2.2vw, 32px);
-  padding: 6px 18px;
+  font-size: clamp(14px, 2vw, 28px);
+  font-weight: 1000;
+  padding: 10px 22px;
   white-space: nowrap;
-  transition: background 0.18s;
+  position: relative;
+  z-index: 1;
+  -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  transition: all 250ms;
+  overflow: hidden;
+}
+.dropbtn::before,
+.navbtn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  border-radius: 15px;
+  background-color: #0026c5;
+  z-index: -1;
+  -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  transition: all 250ms;
 }
 .dropbtn:hover,
 .navbtn:hover {
-  background: #0026c5;
+  color: #e8e8e8;
+}
+.dropbtn:hover::before,
+.navbtn:hover::before {
+  width: 100%;
 }
 /* About — pushed to horizontal center */
 .navbtn.center {
