@@ -194,6 +194,7 @@ html, body {
 }
 
 /* ---- Per-page background images ---- */
+#panel-projecten { background-image: url('background.jpg'); }
 #panel-over    { background-image: url('background-over.jpg'); }
 #panel-contact { background-image: url('background-contact.jpg'); }
 #panel-foto    { background-image: url('background-foto.jpg'); }
@@ -222,3 +223,36 @@ html, body {
   letter-spacing: -0.02em;
 }
 .page-content p { margin-bottom: 10px; }
+
+.project-links {
+  display: flex;
+  gap: 16px;
+  margin-top: 20px;
+}
+.project-links a {
+  display: inline-block;
+  padding: 12px 28px;
+  background: #212121;
+  color: #e8e8e8;
+  text-decoration: none;
+  border-radius: 15px;
+  font-family: 'Roboto Mono', monospace;
+  font-weight: 700;
+  font-size: clamp(14px, 1.8vw, 22px);
+  box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  transition: background 250ms, color 250ms;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+.project-links a::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  height: 100%; width: 0;
+  background: #0026c5;
+  border-radius: 15px;
+  z-index: -1;
+  transition: width 250ms;
+}
+.project-links a:hover::before { width: 100%; }

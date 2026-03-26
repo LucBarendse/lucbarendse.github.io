@@ -46,6 +46,18 @@
       <div class="hero-overlay"></div>
     </div>
 
+    <div class="panel" id="panel-projecten">
+      <div class="hero-overlay"></div>
+      <div class="page-content">
+        <h2>Projecten</h2>
+        <p>Bekijk mijn werk onderverdeeld per categorie:</p>
+        <div class="project-links">
+          <a href="#" onclick="showPanel('foto'); return false;">📷 Foto</a>
+          <a href="#" onclick="showPanel('video'); return false;">🎬 Video</a>
+        </div>
+      </div>
+    </div>
+
     <div class="panel" id="panel-over">
       <div class="hero-overlay"></div>
       <div class="hero hero--over"></div>
@@ -113,14 +125,14 @@
       // highlight active nav button
       document.querySelectorAll('.dropbtn, .navbtn').forEach(btn => btn.classList.remove('nav-active'));
       const activeBtn = document.querySelector(`[data-panel="${id}"]`)
-        || (['foto','video','project1','project2','project3','project4'].includes(id) && document.querySelector('[data-panel="projecten"]'));
+        || (['foto','video','project1','project2','project3','project4','projecten'].includes(id) && document.querySelector('[data-panel="projecten"]'));
       if (activeBtn) activeBtn.classList.add('nav-active');
     }
 
-    // Dropdown toggle
+    // Dropdown toggle on click — also navigate to projecten
     document.getElementById('dropbtn').addEventListener('click', function(e) {
       e.stopPropagation();
-      document.getElementById('dropdown-content').classList.toggle('open');
+      showPanel('projecten');
     });
 
     document.addEventListener('click', function() {
