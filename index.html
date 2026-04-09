@@ -315,7 +315,7 @@
       <div class="page-content">
         <h2>Contact</h2>
         <p>Neem gerust contact op via:</p>
-        <p>📧 <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="214b4e545661444c40484d0f424e4c">[email&#160;protected]</a></p>
+        <p>📧 jouw@email.com</p>
         <p>📷 @jouwinstagram</p>
       </div>
     </div>
@@ -424,7 +424,6 @@
   </div><!-- /panels-container -->
 
   <script>
-document.addEventListener("DOMContentLoaded", function () {
     // =============================================
     //  PRELOADER
     // =============================================
@@ -446,7 +445,7 @@ document.addEventListener("DOMContentLoaded", function () {
           const img = new Image();
           img.onload = img.onerror = () => {
             loaded++;
-            if (bar) bar.style.width = (loaded / total * 100) + '%';
+            bar.style.width = (loaded / total * 100) + '%';
             if (loaded === total) resolve();
           };
           img.src = url;
@@ -454,16 +453,10 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
 
-    function dismissPreloader() {
+    preloadImages(IMAGES_TO_PRELOAD).then(() => {
       const preloader = document.getElementById('preloader');
-      if (!preloader) return;
       preloader.classList.add('fade-out');
       preloader.addEventListener('transitionend', () => preloader.remove(), { once: true });
-    }
-    const fallbackTimer = setTimeout(dismissPreloader, 4000);
-    preloadImages(IMAGES_TO_PRELOAD).then(() => {
-      clearTimeout(fallbackTimer);
-      dismissPreloader();
     });
 
     // =============================================
@@ -607,12 +600,11 @@ document.addEventListener("DOMContentLoaded", function () {
       window.addEventListener('mousemove', e => onDragMove(e.clientX));
       window.addEventListener('mouseup',       onDragEnd);
 
-            strip.addEventListener('touchstart', e => onDragStart(e.touches[0].clientX), { passive: true });
+      strip.addEventListener('touchstart', e => onDragStart(e.touches[0].clientX), { passive: true });
       strip.addEventListener('touchmove',  e => onDragMove(e.touches[0].clientX),  { passive: true });
       strip.addEventListener('touchend',       onDragEnd);
 
     })();
-  }); // DOMContentLoaded
   </script>
 </body>
 </html>
