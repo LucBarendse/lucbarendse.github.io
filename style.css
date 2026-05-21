@@ -307,6 +307,8 @@ html, body {
   color: #fff;
   font-size: clamp(15px, 1.8vw, 22px);
   line-height: 1.7;
+  /* Push down so content never touches the topbar */
+  margin-top: clamp(50px, 7vw, 80px);
 }
 .page-content h2 {
   font-family: 'Roboto Mono', monospace;
