@@ -445,59 +445,69 @@
 
     <div class="panel" id="panel-projecten">
       <div class="hero-overlay"></div>
-      <div class="page-content">
-        <h2>Projecten</h2>
-        <p class="section-subtitle">Een overzicht van al mijn werk</p>
+      <div class="film-strip-outer" id="film-strip-outer-projecten">
+        <div class="film-strip" id="film-strip-projecten">
 
-        <!-- Foto Projects -->
-        <div class="category-section">
-          <div class="category-title">Foto</div>
-          <div class="projects-grid">
-            <a href="#" class="project-card" onclick="showPanel('project1'); return false;">
-              <img src="onderweg/01.jpg" alt="Onderweg">
-              <div class="project-card-overlay">
-                <div class="project-card-category">Fotografie</div>
-                <h3 class="project-card-title">Onderweg</h3>
+          <div class="film-slide active">
+            <a href="#" class="proj-card-link" onclick="showPanel('project1'); return false;">
+              <img src="onderweg/01.jpg" alt="Onderweg" draggable="false">
+              <div class="proj-card-label">
+                <span class="proj-card-cat">Fotografie</span>
+                <span class="proj-card-title">Onderweg</span>
               </div>
             </a>
-            <a href="#" class="project-card" onclick="showPanel('project2'); return false;">
-              <img src="schoenen/01.jpg" alt="Schoenen">
-              <div class="project-card-overlay">
-                <div class="project-card-category">Fotografie</div>
-                <h3 class="project-card-title">Schoenen</h3>
-              </div>
-            </a>
-            <a href="#" class="project-card" onclick="showPanel('project3'); return false;">
-              <img src="spinnen/01.jpg" alt="Spinnen">
-              <div class="project-card-overlay">
-                <div class="project-card-category">Fotografie</div>
-                <h3 class="project-card-title">Spinnen</h3>
-              </div>
-            </a>
-            <a href="#" class="project-card" onclick="showPanel('project4'); return false;">
-              <img src="zelfportret/01.jpg" alt="Zelfportret">
-              <div class="project-card-overlay">
-                <div class="project-card-category">Fotografie</div>
-                <h3 class="project-card-title">Zelfportret</h3>
-              </div>
-            </a>
+            <span class="slide-caption">01 / 05</span>
           </div>
+
+          <div class="film-slide">
+            <a href="#" class="proj-card-link" onclick="showPanel('project2'); return false;">
+              <img src="schoenen/01.jpg" alt="Schoenen" draggable="false">
+              <div class="proj-card-label">
+                <span class="proj-card-cat">Fotografie</span>
+                <span class="proj-card-title">Schoenen</span>
+              </div>
+            </a>
+            <span class="slide-caption">02 / 05</span>
+          </div>
+
+          <div class="film-slide">
+            <a href="#" class="proj-card-link" onclick="showPanel('project3'); return false;">
+              <img src="spinnen/01.jpg" alt="Spinnen" draggable="false">
+              <div class="proj-card-label">
+                <span class="proj-card-cat">Fotografie</span>
+                <span class="proj-card-title">Spinnen</span>
+              </div>
+            </a>
+            <span class="slide-caption">03 / 05</span>
+          </div>
+
+          <div class="film-slide">
+            <a href="#" class="proj-card-link" onclick="showPanel('project4'); return false;">
+              <img src="zelfportret/01.jpg" alt="Zelfportret" draggable="false">
+              <div class="proj-card-label">
+                <span class="proj-card-cat">Fotografie</span>
+                <span class="proj-card-title">Zelfportret</span>
+              </div>
+            </a>
+            <span class="slide-caption">04 / 05</span>
+          </div>
+
+          <div class="film-slide">
+            <a href="#" class="proj-card-link" onclick="showPanel('mimesis'); return false;">
+              <div class="proj-card-video-thumb">▶</div>
+              <div class="proj-card-label">
+                <span class="proj-card-cat">Video</span>
+                <span class="proj-card-title">Mimesis</span>
+              </div>
+            </a>
+            <span class="slide-caption">05 / 05</span>
+          </div>
+
         </div>
-
-        <!-- Video Projects -->
-        <div class="category-section">
-          <div class="category-title">Video</div>
-          <div class="projects-grid">
-            <a href="#" class="project-card" onclick="showPanel('mimesis'); return false;">
-              <div style="width:100%;height:100%;background:linear-gradient(135deg,#0a0a1a 0%,#1a1a3e 100%);display:flex;align-items:center;justify-content:center;">
-                <div style="font-size:48px;opacity:0.5;">▶</div>
-              </div>
-              <div class="project-card-overlay">
-                <div class="project-card-category">Video</div>
-                <h3 class="project-card-title">Mimesis</h3>
-              </div>
-            </a>
-          </div>
+        <div class="strip-dots" id="strip-dots-projecten"></div>
+        <div class="strip-nav">
+          <button class="strip-btn" id="btn-prev-projecten" aria-label="Vorig project" disabled>&#8592;</button>
+          <button class="strip-btn" id="btn-next-projecten" aria-label="Volgend project">&#8594;</button>
         </div>
       </div>
     </div>
@@ -525,62 +535,84 @@
     </div>
 
     <div class="panel" id="panel-foto">
-      <div class="hero hero--foto"></div>
       <div class="hero-overlay"></div>
-      <div class="page-content">
-        <h2>Foto</h2>
-        <p class="section-subtitle">Overzicht van alle fotoprojecten</p>
+      <div class="film-strip-outer" id="film-strip-outer-foto">
+        <div class="film-strip" id="film-strip-foto">
 
-        <div class="projects-grid">
-          <a href="#" class="project-card" onclick="showPanel('project1'); return false;">
-            <img src="onderweg/01.jpg" alt="Onderweg">
-            <div class="project-card-overlay">
-              <div class="project-card-category">10 foto's</div>
-              <h3 class="project-card-title">Onderweg</h3>
-            </div>
-          </a>
-          <a href="#" class="project-card" onclick="showPanel('project2'); return false;">
-            <img src="schoenen/01.jpg" alt="Schoenen">
-            <div class="project-card-overlay">
-              <div class="project-card-category">1 foto</div>
-              <h3 class="project-card-title">Schoenen</h3>
-            </div>
-          </a>
-          <a href="#" class="project-card" onclick="showPanel('project3'); return false;">
-            <img src="spinnen/01.jpg" alt="Spinnen">
-            <div class="project-card-overlay">
-              <div class="project-card-category">4 foto's</div>
-              <h3 class="project-card-title">Spinnen</h3>
-            </div>
-          </a>
-          <a href="#" class="project-card" onclick="showPanel('project4'); return false;">
-            <img src="zelfportret/01.jpg" alt="Zelfportret">
-            <div class="project-card-overlay">
-              <div class="project-card-category">Panorama</div>
-              <h3 class="project-card-title">Zelfportret</h3>
-            </div>
-          </a>
+          <div class="film-slide active">
+            <a href="#" class="proj-card-link" onclick="showPanel('project1'); return false;">
+              <img src="onderweg/01.jpg" alt="Onderweg" draggable="false">
+              <div class="proj-card-label">
+                <span class="proj-card-cat">10 foto's</span>
+                <span class="proj-card-title">Onderweg</span>
+              </div>
+            </a>
+            <span class="slide-caption">01 / 04</span>
+          </div>
+
+          <div class="film-slide">
+            <a href="#" class="proj-card-link" onclick="showPanel('project2'); return false;">
+              <img src="schoenen/01.jpg" alt="Schoenen" draggable="false">
+              <div class="proj-card-label">
+                <span class="proj-card-cat">1 foto</span>
+                <span class="proj-card-title">Schoenen</span>
+              </div>
+            </a>
+            <span class="slide-caption">02 / 04</span>
+          </div>
+
+          <div class="film-slide">
+            <a href="#" class="proj-card-link" onclick="showPanel('project3'); return false;">
+              <img src="spinnen/01.jpg" alt="Spinnen" draggable="false">
+              <div class="proj-card-label">
+                <span class="proj-card-cat">4 foto's</span>
+                <span class="proj-card-title">Spinnen</span>
+              </div>
+            </a>
+            <span class="slide-caption">03 / 04</span>
+          </div>
+
+          <div class="film-slide">
+            <a href="#" class="proj-card-link" onclick="showPanel('project4'); return false;">
+              <img src="zelfportret/01.jpg" alt="Zelfportret" draggable="false">
+              <div class="proj-card-label">
+                <span class="proj-card-cat">Panorama</span>
+                <span class="proj-card-title">Zelfportret</span>
+              </div>
+            </a>
+            <span class="slide-caption">04 / 04</span>
+          </div>
+
+        </div>
+        <div class="strip-dots" id="strip-dots-foto"></div>
+        <div class="strip-nav">
+          <button class="strip-btn" id="btn-prev-foto" aria-label="Vorig project" disabled>&#8592;</button>
+          <button class="strip-btn" id="btn-next-foto" aria-label="Volgend project">&#8594;</button>
         </div>
       </div>
     </div>
 
     <div class="panel" id="panel-video">
-      <div class="hero hero--video"></div>
       <div class="hero-overlay"></div>
-      <div class="page-content">
-        <h2>Video</h2>
-        <p class="section-subtitle">Overzicht van alle videoprojecten</p>
+      <div class="film-strip-outer" id="film-strip-outer-video">
+        <div class="film-strip" id="film-strip-video">
 
-        <div class="projects-grid">
-          <a href="#" class="project-card" onclick="showPanel('mimesis'); return false;">
-            <div style="width:100%;height:100%;background:linear-gradient(135deg,#0a0a1a 0%,#1a1a3e 100%);display:flex;align-items:center;justify-content:center;">
-              <div style="font-size:48px;opacity:0.5;">▶</div>
-            </div>
-            <div class="project-card-overlay">
-              <div class="project-card-category">3 video's</div>
-              <h3 class="project-card-title">Mimesis</h3>
-            </div>
-          </a>
+          <div class="film-slide active">
+            <a href="#" class="proj-card-link" onclick="showPanel('mimesis'); return false;">
+              <div class="proj-card-video-thumb">▶</div>
+              <div class="proj-card-label">
+                <span class="proj-card-cat">3 video's</span>
+                <span class="proj-card-title">Mimesis</span>
+              </div>
+            </a>
+            <span class="slide-caption">01 / 01</span>
+          </div>
+
+        </div>
+        <div class="strip-dots" id="strip-dots-video"></div>
+        <div class="strip-nav">
+          <button class="strip-btn" id="btn-prev-video" aria-label="Vorig project" disabled>&#8592;</button>
+          <button class="strip-btn" id="btn-next-video" aria-label="Volgend project" disabled>&#8594;</button>
         </div>
       </div>
     </div>
@@ -1247,6 +1279,163 @@
         if (current !== 'mimesis') return;
         if (e.key === 'ArrowRight' || e.key === 'ArrowDown') goTo(index + 1);
         if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   goTo(index - 1);
+      });
+    })();
+
+    // =============================================
+    //  PROJECTEN — HORIZONTAL STRIP
+    // =============================================
+    (function () {
+      const strip   = document.getElementById('film-strip-projecten');
+      if (!strip) return;
+      const slides  = Array.from(strip.querySelectorAll('.film-slide'));
+      const btnPrev = document.getElementById('btn-prev-projecten');
+      const btnNext = document.getElementById('btn-next-projecten');
+      const dotsWrap = document.getElementById('strip-dots-projecten');
+
+      const total = slides.length;
+      let index = 0;
+
+      const dots = slides.map((_, i) => {
+        const d = document.createElement('div');
+        d.className = 'strip-dot' + (i === 0 ? ' active' : '');
+        d.addEventListener('click', () => goTo(i));
+        dotsWrap.appendChild(d);
+        return d;
+      });
+
+      function goTo(i) {
+        if (i < 0 || i >= total) return;
+        slides[index].classList.remove('active');
+        dots[index].classList.remove('active');
+        index = i;
+        slides[index].classList.add('active');
+        dots[index].classList.add('active');
+        strip.style.transform = `translateX(-${index * 100}%)`;
+        btnPrev.disabled = index === 0;
+        btnNext.disabled = index === total - 1;
+      }
+
+      btnPrev.addEventListener('click', () => goTo(index - 1));
+      btnNext.addEventListener('click', () => goTo(index + 1));
+
+      document.addEventListener('keydown', (e) => {
+        if (current !== 'projecten') return;
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') goTo(index + 1);
+        if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   goTo(index - 1);
+      });
+
+      let dragStart = null, dragOffset = 0;
+      const THRESHOLD = 60;
+
+      function onDragStart(x) { dragStart = x; strip.classList.add('is-dragging'); }
+      function onDragMove(x) {
+        if (dragStart === null) return;
+        dragOffset = x - dragStart;
+        if (index === 0 && dragOffset > 0) dragOffset = 0;
+        if (index === total - 1 && dragOffset < 0) dragOffset = 0;
+        strip.style.transform = `translateX(calc(${-index * 100}% + ${dragOffset}px))`;
+      }
+      function onDragEnd() {
+        if (dragStart === null) return;
+        strip.classList.remove('is-dragging');
+        if (dragOffset < -THRESHOLD) goTo(index + 1);
+        else if (dragOffset > THRESHOLD) goTo(index - 1);
+        else goTo(index);
+        dragStart = null; dragOffset = 0;
+      }
+
+      strip.addEventListener('mousedown',  e => onDragStart(e.clientX));
+      window.addEventListener('mousemove', e => onDragMove(e.clientX));
+      window.addEventListener('mouseup',       onDragEnd);
+      strip.addEventListener('touchstart', e => onDragStart(e.touches[0].clientX), { passive: true });
+      strip.addEventListener('touchmove',  e => onDragMove(e.touches[0].clientX),  { passive: true });
+      strip.addEventListener('touchend',       onDragEnd);
+    })();
+
+    // =============================================
+    //  FOTO — HORIZONTAL STRIP
+    // =============================================
+    (function () {
+      const strip   = document.getElementById('film-strip-foto');
+      if (!strip) return;
+      const slides  = Array.from(strip.querySelectorAll('.film-slide'));
+      const btnPrev = document.getElementById('btn-prev-foto');
+      const btnNext = document.getElementById('btn-next-foto');
+      const dotsWrap = document.getElementById('strip-dots-foto');
+
+      const total = slides.length;
+      let index = 0;
+
+      const dots = slides.map((_, i) => {
+        const d = document.createElement('div');
+        d.className = 'strip-dot' + (i === 0 ? ' active' : '');
+        d.addEventListener('click', () => goTo(i));
+        dotsWrap.appendChild(d);
+        return d;
+      });
+
+      function goTo(i) {
+        if (i < 0 || i >= total) return;
+        slides[index].classList.remove('active');
+        dots[index].classList.remove('active');
+        index = i;
+        slides[index].classList.add('active');
+        dots[index].classList.add('active');
+        strip.style.transform = `translateX(-${index * 100}%)`;
+        btnPrev.disabled = index === 0;
+        btnNext.disabled = index === total - 1;
+      }
+
+      btnPrev.addEventListener('click', () => goTo(index - 1));
+      btnNext.addEventListener('click', () => goTo(index + 1));
+
+      document.addEventListener('keydown', (e) => {
+        if (current !== 'foto') return;
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') goTo(index + 1);
+        if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   goTo(index - 1);
+      });
+
+      let dragStart = null, dragOffset = 0;
+      const THRESHOLD = 60;
+      function onDragStart(x) { dragStart = x; strip.classList.add('is-dragging'); }
+      function onDragMove(x) {
+        if (dragStart === null) return;
+        dragOffset = x - dragStart;
+        if (index === 0 && dragOffset > 0) dragOffset = 0;
+        if (index === total - 1 && dragOffset < 0) dragOffset = 0;
+        strip.style.transform = `translateX(calc(${-index * 100}% + ${dragOffset}px))`;
+      }
+      function onDragEnd() {
+        if (dragStart === null) return;
+        strip.classList.remove('is-dragging');
+        if (dragOffset < -THRESHOLD) goTo(index + 1);
+        else if (dragOffset > THRESHOLD) goTo(index - 1);
+        else goTo(index);
+        dragStart = null; dragOffset = 0;
+      }
+      strip.addEventListener('mousedown',  e => onDragStart(e.clientX));
+      window.addEventListener('mousemove', e => onDragMove(e.clientX));
+      window.addEventListener('mouseup',       onDragEnd);
+      strip.addEventListener('touchstart', e => onDragStart(e.touches[0].clientX), { passive: true });
+      strip.addEventListener('touchmove',  e => onDragMove(e.touches[0].clientX),  { passive: true });
+      strip.addEventListener('touchend',       onDragEnd);
+    })();
+
+    // =============================================
+    //  VIDEO — HORIZONTAL STRIP
+    // =============================================
+    (function () {
+      const strip   = document.getElementById('film-strip-video');
+      if (!strip) return;
+      const slides  = Array.from(strip.querySelectorAll('.film-slide'));
+      const dotsWrap = document.getElementById('strip-dots-video');
+
+      slides.map((_, i) => {
+        const d = document.createElement('div');
+        d.className = 'strip-dot' + (i === 0 ? ' active' : '');
+        dotsWrap.appendChild(d);
+        return d;
       });
     })();
   </script>
