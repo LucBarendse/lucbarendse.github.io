@@ -370,6 +370,32 @@
       height: 1px;
       background: rgba(255,255,255,0.15);
     }
+    /* =========================================
+       VIDEO STRIP (Mimesis)
+       ========================================= */
+    #panel-mimesis {
+      background: #000;
+      display: none;
+    }
+    #panel-mimesis.active { display: flex; }
+
+    .video-slide-inner {
+      position: relative;
+      width: min(900px, 88vw);
+      aspect-ratio: 16 / 9;
+      margin-top: 60px;
+      background: #111;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.7);
+    }
+    .video-slide-inner iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
   </style>
 </head>
 <body>
@@ -401,8 +427,7 @@
           <div class="dropdown-nested">
             <a href="#" onclick="showPanel('video'); return false;">Video ▾</a>
             <div class="dropdown-nested-content">
-              <a href="#" onclick="showPanel('project3'); return false;">Project 1</a>
-              <a href="#" onclick="showPanel('project4'); return false;">Project 2</a>
+              <a href="#" onclick="showPanel('mimesis'); return false;">Mimesis</a>
             </div>
           </div>
         </div>
@@ -463,12 +488,15 @@
         <div class="category-section">
           <div class="category-title">Video</div>
           <div class="projects-grid">
-            <div class="project-card" style="background: #1a1a1a; display: flex; align-items: center; justify-content: center;">
-              <div style="text-align: center; color: rgba(255,255,255,0.3); font-family: 'Roboto Mono', monospace; font-size: 14px;">
-                <div style="font-size: 32px; margin-bottom: 8px;">🎬</div>
-                Binnenkort
+            <a href="#" class="project-card" onclick="showPanel('mimesis'); return false;">
+              <div style="width:100%;height:100%;background:linear-gradient(135deg,#0a0a1a 0%,#1a1a3e 100%);display:flex;align-items:center;justify-content:center;">
+                <div style="font-size:48px;opacity:0.5;">▶</div>
               </div>
-            </div>
+              <div class="project-card-overlay">
+                <div class="project-card-category">Video</div>
+                <h3 class="project-card-title">Mimesis</h3>
+              </div>
+            </a>
           </div>
         </div>
       </div>
@@ -479,9 +507,9 @@
       <div class="hero hero--over"></div>
       <div class="page-content">
         <h2>Over mij</h2>
-        <p>Mijn naam is Luc. Ik ben 18 jaar oud met een bijna levenslange passie voor fotografie en video en ik was een student op Atlascollege kunst&vormgeving van 2022 - 2026 waar ik Audiovisuele vorming had gevolgt daar begon ik met leren over fotografie en video. </p>
-	<p>Ik epirimenteer vooral op technische en conceptuele basis waarbij ik vooral focus op informatica, en nieuwe dingen uit te proberen.</p>
-	<p> Ik kan werken met Premiere pro, Davinci resolve, After effects en Photoshop</p>
+        <p>Mijn naam is Luc. Ik ben 18 jaar oud met een bijna levenslange passie voor fotografie en video. Van 2022 tot 2026 was ik student aan het Atlascollege Kunst & Vormgeving, waar ik Audiovisuele Vorming volgde — daar begon mijn weg in fotografie en video.</p>
+        <p>Ik experimenteer vooral op technische en conceptuele basis, met een focus op informatica en het uitproberen van nieuwe dingen.</p>
+        <p>Ik werk met Premiere Pro, DaVinci Resolve, After Effects en Photoshop.</p>
       </div>
     </div>
 
@@ -544,14 +572,15 @@
         <p class="section-subtitle">Overzicht van alle videoprojecten</p>
 
         <div class="projects-grid">
-          <!-- Placeholder for future video projects -->
-          <div class="project-card" style="background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); display: flex; align-items: center; justify-content: center;">
-            <div style="text-align: center; padding: 30px;">
-              <div style="font-size: 48px; margin-bottom: 16px; opacity: 0.6;">🎬</div>
-              <div style="font-family: 'Roboto Mono', monospace; font-size: 16px; color: rgba(255,255,255,0.6); margin-bottom: 8px;">Binnenkort beschikbaar</div>
-              <div style="font-family: 'Roboto Mono', monospace; font-size: 12px; color: rgba(255,255,255,0.3);">Video projecten in de maak</div>
+          <a href="#" class="project-card" onclick="showPanel('mimesis'); return false;">
+            <div style="width:100%;height:100%;background:linear-gradient(135deg,#0a0a1a 0%,#1a1a3e 100%);display:flex;align-items:center;justify-content:center;">
+              <div style="font-size:48px;opacity:0.5;">▶</div>
             </div>
-          </div>
+            <div class="project-card-overlay">
+              <div class="project-card-category">3 video's</div>
+              <h3 class="project-card-title">Mimesis</h3>
+            </div>
+          </a>
         </div>
       </div>
     </div>
@@ -668,6 +697,64 @@
       </div>
     </div>
 
+    <!-- =============================================
+         MIMESIS — VIDEO STRIP
+         ============================================= -->
+    <div class="panel" id="panel-mimesis">
+      <div class="film-strip-outer" id="film-strip-outer-mimesis">
+        <div class="film-strip" id="film-strip-mimesis">
+
+          <div class="film-slide active">
+            <div class="video-slide-inner">
+              <iframe
+                src="https://www.youtube.com/embed/gASjjyswULU?enablejsapi=1"
+                title="Mimesis 01"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen>
+              </iframe>
+            </div>
+            <span class="slide-caption">01</span>
+          </div>
+
+          <div class="film-slide">
+            <div class="video-slide-inner">
+              <iframe
+                src="https://www.youtube.com/embed/rJH7yEKOt_Y?enablejsapi=1"
+                title="Mimesis 02"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen>
+              </iframe>
+            </div>
+            <span class="slide-caption">02</span>
+          </div>
+
+          <div class="film-slide">
+            <div class="video-slide-inner">
+              <iframe
+                src="https://www.youtube.com/embed/jpDGv8z0Lsw?enablejsapi=1"
+                title="Mimesis 03"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen>
+              </iframe>
+            </div>
+            <span class="slide-caption">03</span>
+          </div>
+
+        </div>
+        <div class="strip-dots" id="strip-dots-mimesis"></div>
+        <div class="strip-nav">
+          <button class="strip-btn" id="btn-prev-mimesis" aria-label="Vorige video" disabled>&#8592;</button>
+          <button class="strip-btn" id="btn-next-mimesis" aria-label="Volgende video">&#8594;</button>
+        </div>
+      </div>
+    </div>
+
   </div><script>
     // =============================================
     //  PRELOADER
@@ -716,6 +803,7 @@
       project3:  1.4,
       project4:  1.5,
       video:     1.6,
+      mimesis:   1.7,
       over:      2,
       contact:   3
     };
@@ -746,7 +834,7 @@
       document.getElementById('dropdown-content').classList.remove('open');
       document.querySelectorAll('.dropbtn, .navbtn').forEach(btn => btn.classList.remove('nav-active'));
       const activeBtn = document.querySelector(`[data-panel="${id}"]`)
-        || (['foto','video','project1','project2','project3','project4','projecten'].includes(id)
+        || (['foto','video','project1','project2','project3','project4','projecten','mimesis'].includes(id)
             && document.querySelector('[data-panel="projecten"]'));
       if (activeBtn) activeBtn.classList.add('nav-active');
     }
@@ -1103,6 +1191,63 @@
       container.addEventListener('touchstart', e => onDragStart(e.touches[0].clientX), { passive: true });
       container.addEventListener('touchmove',  e => onDragMove(e.touches[0].clientX),  { passive: true });
       container.addEventListener('touchend',       onDragEnd);
+    })();
+
+    // =============================================
+    //  MIMESIS — VIDEO STRIP
+    // =============================================
+    (function () {
+      const strip   = document.getElementById('film-strip-mimesis');
+      if (!strip) return;
+      const slides  = Array.from(strip.querySelectorAll('.film-slide'));
+      const btnPrev = document.getElementById('btn-prev-mimesis');
+      const btnNext = document.getElementById('btn-next-mimesis');
+      const dotsWrap = document.getElementById('strip-dots-mimesis');
+
+      const total = slides.length;
+      let index = 0;
+
+      const dots = slides.map((_, i) => {
+        const d = document.createElement('div');
+        d.className = 'strip-dot' + (i === 0 ? ' active' : '');
+        d.addEventListener('click', () => goTo(i));
+        dotsWrap.appendChild(d);
+        return d;
+      });
+
+      // Pause all YouTube iframes (via postMessage)
+      function pauseAllVideos() {
+        strip.querySelectorAll('iframe').forEach(iframe => {
+          try {
+            iframe.contentWindow.postMessage(
+              JSON.stringify({ event: 'command', func: 'pauseVideo', args: [] }),
+              '*'
+            );
+          } catch (e) {}
+        });
+      }
+
+      function goTo(i) {
+        if (i < 0 || i >= total) return;
+        pauseAllVideos();
+        slides[index].classList.remove('active');
+        dots[index].classList.remove('active');
+        index = i;
+        slides[index].classList.add('active');
+        dots[index].classList.add('active');
+        strip.style.transform = `translateX(-${index * 100}%)`;
+        btnPrev.disabled = index === 0;
+        btnNext.disabled = index === total - 1;
+      }
+
+      btnPrev.addEventListener('click', () => goTo(index - 1));
+      btnNext.addEventListener('click', () => goTo(index + 1));
+
+      document.addEventListener('keydown', (e) => {
+        if (current !== 'mimesis') return;
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') goTo(index + 1);
+        if (e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   goTo(index - 1);
+      });
     })();
   </script>
 </body>
