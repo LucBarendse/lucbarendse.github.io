@@ -375,6 +375,90 @@
       background: rgba(255,255,255,0.15);
     }
     /* =========================================
+       LIGHTBOX
+       ========================================= */
+    #lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9000;
+      background: rgba(0,0,0,0.93);
+      align-items: center;
+      justify-content: center;
+    }
+    #lightbox.open {
+      display: flex;
+      animation: lbFadeIn 0.2s ease;
+    }
+    @keyframes lbFadeIn {
+      from { opacity: 0; } to { opacity: 1; }
+    }
+    #lightbox-img {
+      max-width: 90vw;
+      max-height: 86vh;
+      object-fit: contain;
+      border-radius: 4px;
+      user-select: none;
+      -webkit-user-drag: none;
+      box-shadow: 0 8px 60px rgba(0,0,0,0.8);
+      display: block;
+    }
+    #lightbox-close {
+      position: absolute;
+      top: 18px; right: 22px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.18);
+      color: #fff;
+      font-size: 22px;
+      line-height: 1;
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 200ms;
+      z-index: 9010;
+    }
+    #lightbox-close:hover { background: #0026c5; border-color: #0026c5; }
+    .lb-nav {
+      position: absolute;
+      top: 50%; transform: translateY(-50%);
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #fff;
+      width: 54px; height: 54px;
+      border-radius: 50%;
+      font-size: 20px;
+      cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 200ms, transform 150ms;
+      backdrop-filter: blur(6px);
+      z-index: 9010;
+    }
+    .lb-nav:hover { background: #0026c5; border-color: #0026c5; transform: translateY(-50%) scale(1.1); }
+    .lb-nav:disabled { opacity: 0.15; pointer-events: none; }
+    #lb-prev { left: 18px; }
+    #lb-next { right: 18px; }
+    #lightbox-caption {
+      position: absolute;
+      bottom: 18px; left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Roboto Mono', monospace;
+      font-size: 13px;
+      color: rgba(255,255,255,0.4);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      pointer-events: none;
+      white-space: nowrap;
+    }
+    /* Photo slides: pointer cursor so it's obvious they're clickable */
+    #panel-project1 .film-slide img,
+    #panel-project2 .film-slide img,
+    #panel-project3 .film-slide img,
+    #panel-latent   .film-slide img {
+      cursor: zoom-in;
+    }
+
+    /* =========================================
        VIDEO STRIP (Mimesis)
        ========================================= */
     #panel-mimesis {
@@ -455,7 +539,7 @@
 
           <div class="film-slide active">
             <a href="#" class="proj-card-link" onclick="showPanel('project1'); return false;">
-              <img src="onderweg/01.jpg" alt="Onderweg" draggable="false">
+              <img onclick="openLightbox(this)" src="onderweg/01.jpg" alt="Onderweg" draggable="false">
               <div class="proj-card-label">
                 <span class="proj-card-cat">Fotografie</span>
                 <span class="proj-card-title">Onderweg</span>
@@ -466,7 +550,7 @@
 
           <div class="film-slide">
             <a href="#" class="proj-card-link" onclick="showPanel('project2'); return false;">
-              <img src="schoenen/01.jpg" alt="Schoenen" draggable="false">
+              <img onclick="openLightbox(this)" src="schoenen/01.jpg" alt="Schoenen" draggable="false">
               <div class="proj-card-label">
                 <span class="proj-card-cat">Fotografie</span>
                 <span class="proj-card-title">Schoenen</span>
@@ -477,7 +561,7 @@
 
           <div class="film-slide">
             <a href="#" class="proj-card-link" onclick="showPanel('project3'); return false;">
-              <img src="spinnen/01.jpg" alt="Spinnen" draggable="false">
+              <img onclick="openLightbox(this)" src="spinnen/01.jpg" alt="Spinnen" draggable="false">
               <div class="proj-card-label">
                 <span class="proj-card-cat">Fotografie</span>
                 <span class="proj-card-title">Spinnen</span>
@@ -510,7 +594,7 @@
 
           <div class="film-slide">
             <a href="#" class="proj-card-link" onclick="showPanel('latent'); return false;">
-              <img src="latent/01.jpg" alt="Latent" draggable="false">
+              <img onclick="openLightbox(this)" src="latent/01.jpg" alt="Latent" draggable="false">
               <div class="proj-card-label">
                 <span class="proj-card-cat">Fotografie</span>
                 <span class="proj-card-title">Latent</span>
@@ -556,7 +640,7 @@
 
           <div class="film-slide active">
             <a href="#" class="proj-card-link" onclick="showPanel('project1'); return false;">
-              <img src="onderweg/01.jpg" alt="Onderweg" draggable="false">
+              <img onclick="openLightbox(this)" src="onderweg/01.jpg" alt="Onderweg" draggable="false">
               <div class="proj-card-label">
                 <span class="proj-card-cat">10 foto's</span>
                 <span class="proj-card-title">Onderweg</span>
@@ -567,7 +651,7 @@
 
           <div class="film-slide">
             <a href="#" class="proj-card-link" onclick="showPanel('project2'); return false;">
-              <img src="schoenen/01.jpg" alt="Schoenen" draggable="false">
+              <img onclick="openLightbox(this)" src="schoenen/01.jpg" alt="Schoenen" draggable="false">
               <div class="proj-card-label">
                 <span class="proj-card-cat">1 foto</span>
                 <span class="proj-card-title">Schoenen</span>
@@ -578,7 +662,7 @@
 
           <div class="film-slide">
             <a href="#" class="proj-card-link" onclick="showPanel('project3'); return false;">
-              <img src="spinnen/01.jpg" alt="Spinnen" draggable="false">
+              <img onclick="openLightbox(this)" src="spinnen/01.jpg" alt="Spinnen" draggable="false">
               <div class="proj-card-label">
                 <span class="proj-card-cat">4 foto's</span>
                 <span class="proj-card-title">Spinnen</span>
@@ -600,7 +684,7 @@
 
           <div class="film-slide">
             <a href="#" class="proj-card-link" onclick="showPanel('latent'); return false;">
-              <img src="latent/01.jpg" alt="Latent" draggable="false">
+              <img onclick="openLightbox(this)" src="latent/01.jpg" alt="Latent" draggable="false">
               <div class="proj-card-label">
                 <span class="proj-card-cat">41 foto's</span>
                 <span class="proj-card-title">Latent</span>
@@ -649,43 +733,43 @@
         <div class="film-strip" id="film-strip">
 
           <div class="film-slide active">
-            <img src="onderweg/01.jpg" alt="Onderweg 01" draggable="false">
+            <img onclick="openLightbox(this)" src="onderweg/01.jpg" alt="Onderweg 01" draggable="false">
             <span class="slide-caption">01</span>
           </div>
           <div class="film-slide">
-            <img src="onderweg/02.jpg" alt="Onderweg 02" draggable="false">
+            <img onclick="openLightbox(this)" src="onderweg/02.jpg" alt="Onderweg 02" draggable="false">
             <span class="slide-caption">02</span>
           </div>
           <div class="film-slide">
-            <img src="onderweg/03.jpg" alt="Onderweg 03" draggable="false">
+            <img onclick="openLightbox(this)" src="onderweg/03.jpg" alt="Onderweg 03" draggable="false">
             <span class="slide-caption">03</span>
           </div>
           <div class="film-slide">
-            <img src="onderweg/04.jpg" alt="Onderweg 04" draggable="false">
+            <img onclick="openLightbox(this)" src="onderweg/04.jpg" alt="Onderweg 04" draggable="false">
             <span class="slide-caption">04</span>
           </div>
           <div class="film-slide">
-            <img src="onderweg/05.jpg" alt="Onderweg 05" draggable="false">
+            <img onclick="openLightbox(this)" src="onderweg/05.jpg" alt="Onderweg 05" draggable="false">
             <span class="slide-caption">05</span>
           </div>
           <div class="film-slide">
-            <img src="onderweg/06.jpg" alt="Onderweg 06" draggable="false">
+            <img onclick="openLightbox(this)" src="onderweg/06.jpg" alt="Onderweg 06" draggable="false">
             <span class="slide-caption">06</span>
           </div>
           <div class="film-slide">
-            <img src="onderweg/07.jpg" alt="Onderweg 07" draggable="false">
+            <img onclick="openLightbox(this)" src="onderweg/07.jpg" alt="Onderweg 07" draggable="false">
             <span class="slide-caption">07</span>
           </div>
           <div class="film-slide">
-            <img src="onderweg/08.jpg" alt="Onderweg 08" draggable="false">
+            <img onclick="openLightbox(this)" src="onderweg/08.jpg" alt="Onderweg 08" draggable="false">
             <span class="slide-caption">08</span>
           </div>
           <div class="film-slide">
-            <img src="onderweg/09.jpg" alt="Onderweg 09" draggable="false">
+            <img onclick="openLightbox(this)" src="onderweg/09.jpg" alt="Onderweg 09" draggable="false">
             <span class="slide-caption">09</span>
           </div>
           <div class="film-slide">
-            <img src="onderweg/10.jpg" alt="Onderweg 10" draggable="false">
+            <img onclick="openLightbox(this)" src="onderweg/10.jpg" alt="Onderweg 10" draggable="false">
             <span class="slide-caption">10</span>
           </div>
 
@@ -703,7 +787,7 @@
       <div class="film-strip-outer" id="film-strip-outer-2">
         <div class="film-strip" id="film-strip-2">
           <div class="film-slide active">
-            <img src="schoenen/01.jpg" alt="Schoenen 01" draggable="false">
+            <img onclick="openLightbox(this)" src="schoenen/01.jpg" alt="Schoenen 01" draggable="false">
             <span class="slide-caption">01</span>
           </div>
         </div><div class="strip-dots" id="strip-dots-2"></div>
@@ -718,19 +802,19 @@
       <div class="film-strip-outer" id="film-strip-outer-3">
         <div class="film-strip" id="film-strip-3">
           <div class="film-slide active">
-            <img src="spinnen/01.jpg" alt="Spinnen 01" draggable="false">
+            <img onclick="openLightbox(this)" src="spinnen/01.jpg" alt="Spinnen 01" draggable="false">
             <span class="slide-caption">01</span>
           </div>
           <div class="film-slide">
-            <img src="spinnen/02.jpg" alt="Spinnen 02" draggable="false">
+            <img onclick="openLightbox(this)" src="spinnen/02.jpg" alt="Spinnen 02" draggable="false">
             <span class="slide-caption">02</span>
           </div>
           <div class="film-slide">
-            <img src="spinnen/03.jpg" alt="Spinnen 03" draggable="false">
+            <img onclick="openLightbox(this)" src="spinnen/03.jpg" alt="Spinnen 03" draggable="false">
             <span class="slide-caption">03</span>
           </div>
           <div class="film-slide">
-            <img src="spinnen/04.jpg" alt="Spinnen 04" draggable="false">
+            <img onclick="openLightbox(this)" src="spinnen/04.jpg" alt="Spinnen 04" draggable="false">
             <span class="slide-caption">04</span>
           </div>
         </div><div class="strip-dots" id="strip-dots-3"></div>
@@ -819,47 +903,47 @@
     <div class="panel" id="panel-latent">
       <div class="film-strip-outer" id="film-strip-outer-latent">
         <div class="film-strip" id="film-strip-latent">
-          <div class="film-slide active"><img src="latent/01.jpg" alt="Latent 01" draggable="false"><span class="slide-caption">01</span></div>
-          <div class="film-slide"><img src="latent/02.jpg" alt="Latent 02" draggable="false"><span class="slide-caption">02</span></div>
-          <div class="film-slide"><img src="latent/03.jpg" alt="Latent 03" draggable="false"><span class="slide-caption">03</span></div>
-          <div class="film-slide"><img src="latent/04.jpg" alt="Latent 04" draggable="false"><span class="slide-caption">04</span></div>
-          <div class="film-slide"><img src="latent/05.jpg" alt="Latent 05" draggable="false"><span class="slide-caption">05</span></div>
-          <div class="film-slide"><img src="latent/06.jpg" alt="Latent 06" draggable="false"><span class="slide-caption">06</span></div>
-          <div class="film-slide"><img src="latent/07.jpg" alt="Latent 07" draggable="false"><span class="slide-caption">07</span></div>
-          <div class="film-slide"><img src="latent/08.jpg" alt="Latent 08" draggable="false"><span class="slide-caption">08</span></div>
-          <div class="film-slide"><img src="latent/09.jpg" alt="Latent 09" draggable="false"><span class="slide-caption">09</span></div>
-          <div class="film-slide"><img src="latent/10.jpg" alt="Latent 10" draggable="false"><span class="slide-caption">10</span></div>
-          <div class="film-slide"><img src="latent/11.jpg" alt="Latent 11" draggable="false"><span class="slide-caption">11</span></div>
-          <div class="film-slide"><img src="latent/12.jpg" alt="Latent 12" draggable="false"><span class="slide-caption">12</span></div>
-          <div class="film-slide"><img src="latent/13.jpg" alt="Latent 13" draggable="false"><span class="slide-caption">13</span></div>
-          <div class="film-slide"><img src="latent/14.jpg" alt="Latent 14" draggable="false"><span class="slide-caption">14</span></div>
-          <div class="film-slide"><img src="latent/15.jpg" alt="Latent 15" draggable="false"><span class="slide-caption">15</span></div>
-          <div class="film-slide"><img src="latent/16.jpg" alt="Latent 16" draggable="false"><span class="slide-caption">16</span></div>
-          <div class="film-slide"><img src="latent/17.jpg" alt="Latent 17" draggable="false"><span class="slide-caption">17</span></div>
-          <div class="film-slide"><img src="latent/18.jpg" alt="Latent 18" draggable="false"><span class="slide-caption">18</span></div>
-          <div class="film-slide"><img src="latent/19.jpg" alt="Latent 19" draggable="false"><span class="slide-caption">19</span></div>
-          <div class="film-slide"><img src="latent/20.jpg" alt="Latent 20" draggable="false"><span class="slide-caption">20</span></div>
-          <div class="film-slide"><img src="latent/21.jpg" alt="Latent 21" draggable="false"><span class="slide-caption">21</span></div>
-          <div class="film-slide"><img src="latent/22.jpg" alt="Latent 22" draggable="false"><span class="slide-caption">22</span></div>
-          <div class="film-slide"><img src="latent/23.jpg" alt="Latent 23" draggable="false"><span class="slide-caption">23</span></div>
-          <div class="film-slide"><img src="latent/24.jpg" alt="Latent 24" draggable="false"><span class="slide-caption">24</span></div>
-          <div class="film-slide"><img src="latent/25.jpg" alt="Latent 25" draggable="false"><span class="slide-caption">25</span></div>
-          <div class="film-slide"><img src="latent/26.jpg" alt="Latent 26" draggable="false"><span class="slide-caption">26</span></div>
-          <div class="film-slide"><img src="latent/27.jpg" alt="Latent 27" draggable="false"><span class="slide-caption">27</span></div>
-          <div class="film-slide"><img src="latent/28.jpg" alt="Latent 28" draggable="false"><span class="slide-caption">28</span></div>
-          <div class="film-slide"><img src="latent/29.jpg" alt="Latent 29" draggable="false"><span class="slide-caption">29</span></div>
-          <div class="film-slide"><img src="latent/30.jpg" alt="Latent 30" draggable="false"><span class="slide-caption">30</span></div>
-          <div class="film-slide"><img src="latent/31.jpg" alt="Latent 31" draggable="false"><span class="slide-caption">31</span></div>
-          <div class="film-slide"><img src="latent/32.jpg" alt="Latent 32" draggable="false"><span class="slide-caption">32</span></div>
-          <div class="film-slide"><img src="latent/33.jpg" alt="Latent 33" draggable="false"><span class="slide-caption">33</span></div>
-          <div class="film-slide"><img src="latent/34.jpg" alt="Latent 34" draggable="false"><span class="slide-caption">34</span></div>
-          <div class="film-slide"><img src="latent/35.jpg" alt="Latent 35" draggable="false"><span class="slide-caption">35</span></div>
-          <div class="film-slide"><img src="latent/36.jpg" alt="Latent 36" draggable="false"><span class="slide-caption">36</span></div>
-          <div class="film-slide"><img src="latent/37.jpg" alt="Latent 37" draggable="false"><span class="slide-caption">37</span></div>
-          <div class="film-slide"><img src="latent/38.jpg" alt="Latent 38" draggable="false"><span class="slide-caption">38</span></div>
-          <div class="film-slide"><img src="latent/39.jpg" alt="Latent 39" draggable="false"><span class="slide-caption">39</span></div>
-          <div class="film-slide"><img src="latent/40.jpg" alt="Latent 40" draggable="false"><span class="slide-caption">40</span></div>
-          <div class="film-slide"><img src="latent/41.jpg" alt="Latent 41" draggable="false"><span class="slide-caption">41</span></div>
+          <div class="film-slide active"><img onclick="openLightbox(this)" src="latent/01.jpg" alt="Latent 01" draggable="false"><span class="slide-caption">01</span></div>
+          <div class="film-slide"><img onclick="openLightbox(this)" src="latent/02.jpg" alt="Latent 02" draggable="false"><span class="slide-caption">02</span></div>
+          <div class="film-slide"><img onclick="openLightbox(this)" src="latent/03.jpg" alt="Latent 03" draggable="false"><span class="slide-caption">03</span></div>
+          <div class="film-slide"><img onclick="openLightbox(this)" src="latent/04.jpg" alt="Latent 04" draggable="false"><span class="slide-caption">04</span></div>
+          <div class="film-slide"><img onclick="openLightbox(this)" src="latent/05.jpg" alt="Latent 05" draggable="false"><span class="slide-caption">05</span></div>
+          <div class="film-slide"><img onclick="openLightbox(this)" src="latent/06.jpg" alt="Latent 06" draggable="false"><span class="slide-caption">06</span></div>
+          <div class="film-slide"><img onclick="openLightbox(this)" src="latent/07.jpg" alt="Latent 07" draggable="false"><span class="slide-caption">07</span></div>
+          <div class="film-slide"><img onclick="openLightbox(this)" src="latent/08.jpg" alt="Latent 08" draggable="false"><span class="slide-caption">08</span></div>
+          <div class="film-slide"><img onclick="openLightbox(this)" src="latent/09.jpg" alt="Latent 09" draggable="false"><span class="slide-caption">09</span></div>
+          <div class="film-slide"><img onclick="openLightbox(this)" src="latent/10.jpg" alt="Latent 10" draggable="false"><span class="slide-caption">10</span></div>
+          <div class="film-slide"><img onclick="openLightbox(this)" src="latent/11.jpg" alt="Latent 11" draggable="false"><span class="slide-caption">11</span></div>
+          <div class="film-slide"><img onclick="openLightbox(this)" src="latent/12.jpg" alt="Latent 12" draggable="false"><span class="slide-caption">12</span></div>
+          <div class="film-slide"><img onclick="openLightbox(this)" src="latent/13.jpg" alt="Latent 13" draggable="false"><span class="slide-caption">13</span></div>
+          <div class="film-slide"><img onclick="openLightbox(this)" src="latent/14.jpg" alt="Latent 14" draggable="false"><span class="slide-caption">14</span></div>
+          <div class="film-slide"><img onclick="openLightbox(this)" src="latent/15.jpg" alt="Latent 15" draggable="false"><span class="slide-caption">15</span></div>
+          <div class="film-slide"><img onclick="openLightbox(this)" src="latent/16.jpg" alt="Latent 16" draggable="false"><span class="slide-caption">16</span></div>
+          <div class="film-slide"><img onclick="openLightbox(this)" src="latent/17.jpg" alt="Latent 17" draggable="false"><span class="slide-caption">17</span></div>
+          <div class="film-slide"><img onclick="openLightbox(this)" src="latent/18.jpg" alt="Latent 18" draggable="false"><span class="slide-caption">18</span></div>
+          <div class="film-slide"><img onclick="openLightbox(this)" src="latent/19.jpg" alt="Latent 19" draggable="false"><span class="slide-caption">19</span></div>
+          <div class="film-slide"><img onclick="openLightbox(this)" src="latent/20.jpg" alt="Latent 20" draggable="false"><span class="slide-caption">20</span></div>
+          <div class="film-slide"><img onclick="openLightbox(this)" src="latent/21.jpg" alt="Latent 21" draggable="false"><span class="slide-caption">21</span></div>
+          <div class="film-slide"><img onclick="openLightbox(this)" src="latent/22.jpg" alt="Latent 22" draggable="false"><span class="slide-caption">22</span></div>
+          <div class="film-slide"><img onclick="openLightbox(this)" src="latent/23.jpg" alt="Latent 23" draggable="false"><span class="slide-caption">23</span></div>
+          <div class="film-slide"><img onclick="openLightbox(this)" src="latent/24.jpg" alt="Latent 24" draggable="false"><span class="slide-caption">24</span></div>
+          <div class="film-slide"><img onclick="openLightbox(this)" src="latent/25.jpg" alt="Latent 25" draggable="false"><span class="slide-caption">25</span></div>
+          <div class="film-slide"><img onclick="openLightbox(this)" src="latent/26.jpg" alt="Latent 26" draggable="false"><span class="slide-caption">26</span></div>
+          <div class="film-slide"><img onclick="openLightbox(this)" src="latent/27.jpg" alt="Latent 27" draggable="false"><span class="slide-caption">27</span></div>
+          <div class="film-slide"><img onclick="openLightbox(this)" src="latent/28.jpg" alt="Latent 28" draggable="false"><span class="slide-caption">28</span></div>
+          <div class="film-slide"><img onclick="openLightbox(this)" src="latent/29.jpg" alt="Latent 29" draggable="false"><span class="slide-caption">29</span></div>
+          <div class="film-slide"><img onclick="openLightbox(this)" src="latent/30.jpg" alt="Latent 30" draggable="false"><span class="slide-caption">30</span></div>
+          <div class="film-slide"><img onclick="openLightbox(this)" src="latent/31.jpg" alt="Latent 31" draggable="false"><span class="slide-caption">31</span></div>
+          <div class="film-slide"><img onclick="openLightbox(this)" src="latent/32.jpg" alt="Latent 32" draggable="false"><span class="slide-caption">32</span></div>
+          <div class="film-slide"><img onclick="openLightbox(this)" src="latent/33.jpg" alt="Latent 33" draggable="false"><span class="slide-caption">33</span></div>
+          <div class="film-slide"><img onclick="openLightbox(this)" src="latent/34.jpg" alt="Latent 34" draggable="false"><span class="slide-caption">34</span></div>
+          <div class="film-slide"><img onclick="openLightbox(this)" src="latent/35.jpg" alt="Latent 35" draggable="false"><span class="slide-caption">35</span></div>
+          <div class="film-slide"><img onclick="openLightbox(this)" src="latent/36.jpg" alt="Latent 36" draggable="false"><span class="slide-caption">36</span></div>
+          <div class="film-slide"><img onclick="openLightbox(this)" src="latent/37.jpg" alt="Latent 37" draggable="false"><span class="slide-caption">37</span></div>
+          <div class="film-slide"><img onclick="openLightbox(this)" src="latent/38.jpg" alt="Latent 38" draggable="false"><span class="slide-caption">38</span></div>
+          <div class="film-slide"><img onclick="openLightbox(this)" src="latent/39.jpg" alt="Latent 39" draggable="false"><span class="slide-caption">39</span></div>
+          <div class="film-slide"><img onclick="openLightbox(this)" src="latent/40.jpg" alt="Latent 40" draggable="false"><span class="slide-caption">40</span></div>
+          <div class="film-slide"><img onclick="openLightbox(this)" src="latent/41.jpg" alt="Latent 41" draggable="false"><span class="slide-caption">41</span></div>
         </div>
         <div class="strip-dots" id="strip-dots-latent"></div>
         <div class="strip-nav">
@@ -869,7 +953,18 @@
       </div>
     </div>
 
-  </div><script>
+  </div>
+
+  <!-- LIGHTBOX -->
+  <div id="lightbox" role="dialog" aria-modal="true">
+    <button id="lightbox-close" aria-label="Sluiten">&#x2715;</button>
+    <button class="lb-nav" id="lb-prev" aria-label="Vorige foto">&#8592;</button>
+    <img id="lightbox-img" src="" alt="">
+    <button class="lb-nav" id="lb-next" aria-label="Volgende foto">&#8594;</button>
+    <span id="lightbox-caption"></span>
+  </div>
+
+  <script>
     // =============================================
     //  PRELOADER
     // =============================================
@@ -1596,6 +1691,62 @@
       strip.addEventListener('touchstart', e => onDragStart(e.touches[0].clientX), { passive: true });
       strip.addEventListener('touchmove',  e => onDragMove(e.touches[0].clientX),  { passive: true });
       strip.addEventListener('touchend',       onDragEnd);
+    })();
+    // =============================================
+    //  LIGHTBOX
+    // =============================================
+    (function () {
+      const lb      = document.getElementById('lightbox');
+      const lbImg   = document.getElementById('lightbox-img');
+      const lbCap   = document.getElementById('lightbox-caption');
+      const lbPrev  = document.getElementById('lb-prev');
+      const lbNext  = document.getElementById('lb-next');
+      const lbClose = document.getElementById('lightbox-close');
+
+      let images  = [];
+      let lbIndex = 0;
+
+      window.openLightbox = function (clickedImg) {
+        // Find all sibling photo imgs in the same film-strip
+        const strip = clickedImg.closest('.film-strip');
+        const allImgs = Array.from(
+          strip.querySelectorAll('.film-slide img[onclick]')
+        );
+
+        images  = allImgs.map(img => ({
+          src:     img.src,
+          caption: img.closest('.film-slide').querySelector('.slide-caption')?.textContent || ''
+        }));
+        lbIndex = allImgs.indexOf(clickedImg);
+
+        render();
+        lb.classList.add('open');
+      };
+
+      function render() {
+        lbImg.src         = images[lbIndex].src;
+        lbImg.alt         = images[lbIndex].caption;
+        lbCap.textContent = images[lbIndex].caption + ' / ' + images.length;
+        lbPrev.disabled   = lbIndex === 0;
+        lbNext.disabled   = lbIndex === images.length - 1;
+      }
+
+      function close() {
+        lb.classList.remove('open');
+        lbImg.src = '';
+      }
+
+      lbClose.addEventListener('click', close);
+      lbPrev.addEventListener('click',  () => { if (lbIndex > 0)                    { lbIndex--; render(); } });
+      lbNext.addEventListener('click',  () => { if (lbIndex < images.length - 1)    { lbIndex++; render(); } });
+      lb.addEventListener('click',      e  => { if (e.target === lb) close(); });
+
+      document.addEventListener('keydown', e => {
+        if (!lb.classList.contains('open')) return;
+        if (e.key === 'Escape')                                       close();
+        if (e.key === 'ArrowRight' && lbIndex < images.length - 1) { lbIndex++; render(); }
+        if (e.key === 'ArrowLeft'  && lbIndex > 0)                  { lbIndex--; render(); }
+      });
     })();
   </script>
 </html>
