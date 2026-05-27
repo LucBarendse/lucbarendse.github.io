@@ -336,6 +336,12 @@ html, body {
 }
 .page-content p { margin-bottom: 10px; }
 
+/* ---- Over & Contact: centered text ---- */
+#panel-over .page-content,
+#panel-contact .page-content {
+  text-align: center;
+}
+
 .project-links {
   display: flex;
   gap: 16px;
