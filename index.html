@@ -3,7 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <!-- Warm up the YouTube connection only when needed (no preload) -->
+
   <title>Luc Barendse</title>
   <link rel="stylesheet" href="style.css" />
   <style>
@@ -18,7 +22,7 @@
       align-items: center;
       justify-content: center;
       gap: 20px;
-      transition: opacity 0.6s ease;
+      transition: opacity 0.35s ease;
     }
     #preloader.fade-out { opacity: 0; pointer-events: none; }
     .preloader-name {
@@ -761,7 +765,7 @@
           <div class="film-slide active">
             <div class="video-slide-inner">
               <iframe
-                src="https://www.youtube.com/embed/gASjjyswULU?enablejsapi=1"
+                data-src="https://www.youtube.com/embed/gASjjyswULU?enablejsapi=1"
                 title="Mimesis 01"
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -775,7 +779,7 @@
           <div class="film-slide">
             <div class="video-slide-inner">
               <iframe
-                src="https://www.youtube.com/embed/rJH7yEKOt_Y?enablejsapi=1"
+                data-src="https://www.youtube.com/embed/rJH7yEKOt_Y?enablejsapi=1"
                 title="Mimesis 02"
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -789,7 +793,7 @@
           <div class="film-slide">
             <div class="video-slide-inner">
               <iframe
-                src="https://www.youtube.com/embed/jpDGv8z0Lsw?enablejsapi=1"
+                data-src="https://www.youtube.com/embed/jpDGv8z0Lsw?enablejsapi=1"
                 title="Mimesis 03"
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -940,6 +944,14 @@
         newPanel.classList.remove('slide-in-right', 'slide-in-left');
         newPanel.removeEventListener('animationend', h);
       });
+
+      // Lazy-load YouTube iframes the first time Mimesis is opened
+      if (id === 'mimesis') {
+        document.querySelectorAll('#panel-mimesis iframe[data-src]').forEach(iframe => {
+          iframe.src = iframe.dataset.src;
+          iframe.removeAttribute('data-src');
+        });
+      }
 
       current = id;
       document.getElementById('dropdown-content').classList.remove('open');
