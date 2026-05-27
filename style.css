@@ -291,6 +291,7 @@ html, body {
 #panel-contact { background-image: url('background-contact.jpg'); }
 #panel-foto    { background-image: url('background-foto.jpg'); }
 #panel-video   { background-image: url('background-video.jpg'); }
+#panel-latent  { background-image: none; }
 
 /* ---- Page content block ---- */
 .page-content {
@@ -335,12 +336,6 @@ html, body {
   letter-spacing: -0.02em;
 }
 .page-content p { margin-bottom: 10px; }
-
-/* ---- Over & Contact: centered text ---- */
-#panel-over .page-content,
-#panel-contact .page-content {
-  text-align: center;
-}
 
 .project-links {
   display: flex;
